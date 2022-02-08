@@ -16,6 +16,9 @@ subdata <- subset(data, data$Date == "2007-02-01" | data$Date == "2007-02-02")
 #manipulate data
 subdata$DateTime <- as.POSIXct(paste(subdata$Date,subdata$Time),format="%Y-%m-%d %H:%M:%S")
 
+
+# graph 
+png(file = "plot4.png",width = 550, height = 550)
 par(mfrow=c(2,2))
 
 plot(subdata$DateTime,as.numeric(as.character(subdata$Global_active_power)),type="l",ylab=
@@ -35,7 +38,4 @@ legend("topright",
 plot(subdata$DateTime,as.numeric(as.character(subdata$Global_reactive_power)),type="l",ylab=
        "Global_reactive_power", xlab = "datetime")
 
-
-
-dev.copy(png, file = "plot4.png")
-dev.off
+dev.off()

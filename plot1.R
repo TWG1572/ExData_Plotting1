@@ -1,6 +1,4 @@
 library(data.table)
-library(dplyr)
-library(lubridate)
 
 # get data
 data<-read.table(unz('power_consumption.zip', 'household_power_consumption.txt'),sep = ";", header = T)
@@ -13,14 +11,10 @@ data$Time <- as.ITime(data$Time)
 #subset based on date
 subdata <- subset(data, data$Date == "2007-02-01" | data$Date == "2007-02-02")
 
-#manipulate data
-subdata$DateTime <- as.POSIXct(paste(subdata$Date,subdata$Time),format="%Y-%m-%d %H:%M:%S")
-  
 # graph 
-png(file = "plot2.png",width = 550, height = 550)
+png(file = "plot1.png",width = 550, height = 550)
 
-plot(subdata$DateTime,as.numeric(as.character(subdata$Global_active_power)),type="l",ylab=
-       "Global Active Power (kilowatts)", xlab = "")
+hist(as.numeric(as.character(subdata$Global_active_power)),col="red", main = "Global Active Power", ylab="Frequency", xlab = "Global Active Power(kilowatts)")
 
 dev.off()
 

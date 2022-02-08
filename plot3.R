@@ -16,6 +16,9 @@ subdata <- subset(data, data$Date == "2007-02-01" | data$Date == "2007-02-02")
 #manipulate data
 subdata$DateTime <- as.POSIXct(paste(subdata$Date,subdata$Time),format="%Y-%m-%d %H:%M:%S")
 
+#graph
+png(file = "plot3.png",width = 550, height = 550)
+
 plot(subdata$DateTime,as.numeric(as.character(subdata$Sub_metering_1)),type="l",ylab="Energy sub metering)", xlab = "")
 lines(subdata$DateTime,as.numeric(as.character(subdata$Sub_metering_2)),type="l", col = "red")
 lines(subdata$DateTime,as.numeric(as.character(subdata$Sub_metering_3)),type="l", col = "blue")
@@ -24,6 +27,4 @@ legend("topright",
        col = c("black","red","blue"),
        lty = 1)
 
-
-dev.copy(png, file = "plot3.png")
-dev.off
+dev.off()
