@@ -25,5 +25,5 @@ legend("topright",
        lty = 1)
 
 
-#dev.copy(png, file = "plot3.png")
-#dev.off
+dev.copy(png, file = "plot3.png")
+dev.off
