@@ -37,5 +37,5 @@ plot(subdata$DateTime,as.numeric(as.character(subdata$Global_reactive_power)),ty
 
 
 
-#dev.copy(png, file = "plot4.png")
-#dev.off
+dev.copy(png, file = "plot4.png")
+dev.off
